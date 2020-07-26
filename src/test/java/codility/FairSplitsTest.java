@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class FindFairIndexTest {
+public class FairSplitsTest {
 
-    final FindFairIndex f = new FindFairIndex();
+    final FairSplits f = new FairSplits();
 
     @Test
     public void test1() {
