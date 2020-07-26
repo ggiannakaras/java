@@ -16,7 +16,7 @@ package codility;
  * Assume that:
  * N is an integer within the range [1..50,000].
  */
-public class FirstGreaterIntWithSameDigitSum {
+public class NextSameDigitsSum {
     public int solution(int N) {
         int answer = N;
         int sumOfN = splitAndSum(N);

@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  * N is an integer within the range [2..100,000];
  * each element of arrays A, B is an integer within the range [−1,000,000,000..1,000,000,000].
  */
-public class FindFairIndex {
+public class FairSplits {
     public int solution(int[] A, int[] B) {
         final ArrayList<Integer> fairIndexesA = findFairIndexes(A);
         final ArrayList<Integer> fairIndexesB = findFairIndexes(B);
