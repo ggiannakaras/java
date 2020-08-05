@@ -26,7 +26,7 @@ public class FairSplitsTest {
     public void test3() {
         int[] array1 = {4, -1, 0, 3};
         int[] array2 = {-2, 6, 0, 4};
-        assertEquals(2, f.solution(array1, array2));
+        assertEquals(0, f.solution(array1, array2));
     }
 
     @Test
