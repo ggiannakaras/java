@@ -1,8 +1,6 @@
 package codility;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashSet;
 
 /**
  * You are given two arrays A and B consisting of N integers each.
@@ -27,39 +25,35 @@ import java.util.stream.Collectors;
  */
 public class FairSplits {
     public int solution(int[] A, int[] B) {
-        final ArrayList<Integer> fairIndexesA = findFairIndexes(A);
-        final ArrayList<Integer> fairIndexesB = findFairIndexes(B);
-        final List<Integer> common = fairIndexesA.stream().filter(i ->
-                fairIndexesB.contains(i)).collect(Collectors.toList());
-        return common.size();
-    }
+        int fairIndex = 2; //start index
+        int minArrayLength = fairIndex + 1;
+        int totalFairIndexes = 0;
 
-    private ArrayList<Integer> findFairIndexes(int[] array) {
-        ArrayList<Integer> fairIndexes = new ArrayList<>();
-        int index = 0;
-        if (array.length >= 3) {
-            while (index <= array.length - 1) {
-                index++;
-                if (isFairIndex(array, index)) {
-                    fairIndexes.add(index);
-                }
+        if (A.length < minArrayLength || B.length < minArrayLength)
+            return 0;
+
+        do {
+            HashSet<Integer> integers = new HashSet<>();
+            integers.add(sum(A, 0, fairIndex - 1));
+            integers.add(sum(A, fairIndex, A.length - 1));
+            integers.add(sum(B, 0, fairIndex - 1));
+            integers.add(sum(B, fairIndex, B.length - 1));
+
+            if (integers.size() == 1) {
+                totalFairIndexes++;
             }
-        }
 
-        return fairIndexes;
-    }
+            fairIndex++;
+        } while (fairIndex <= A.length - 1 && fairIndex <= B.length - 1);
 
-    private boolean isFairIndex(int[] array, int index) {
-        return index <= array.length - 1 && sum(array, 0, index -1) == sum(array, index, array.length);
+        return totalFairIndexes;
     }
 
     private int sum(int[] array, int startIndex, int endIndex) {
-        int sum = 0;
+        int total = 0;
         for (int i = startIndex; i <= endIndex; i++) {
-            if (i < array.length)
-                sum += array[i];
-            else return sum;
+            total += array[i];
         }
-        return sum;
+        return total;
     }
 }

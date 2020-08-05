@@ -1,19 +1,8 @@
 package codility;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 public class BoardRecovery {
 
     public static String IMPOSSIBLE = "IMPOSSIBLE";
-
-    private int sum(ArrayList<Integer> list) {
-        return list.stream().mapToInt(Integer::intValue).sum();
-    }
-
-    private String listToString(ArrayList<Integer> list) {
-        return list.stream().map(i -> i.toString()).collect(Collectors.joining());
-    }
 
     public String solution(int U, int L, int[] C) {
         int totalColumns = C.length;
